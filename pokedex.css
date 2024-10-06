@@ -30,6 +30,8 @@
   
   .search-bar {
     margin-bottom: 20px;
+    display: flex; 
+    flex-direction: row;
   }
   
   #pokemonName {
@@ -76,3 +78,21 @@
   .pokemon-details p {
     margin: 5px 0;
   }
+
+  #random-button {
+    padding: 10px;
+    border: none;
+    background-color: rgb(246, 135, 9);
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  
+  #random-button:hover {
+    background-color: rgb(15, 228, 15);
+    color: white;
+  }
+
+

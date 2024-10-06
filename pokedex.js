@@ -1,4 +1,5 @@
 const searchButton = document.getElementById("search-button");
+const randomButton = document.getElementById("random-button");
 const pokemonName = document.getElementById("pokemonName");
 const pokemonDetails = document.getElementById("pokemonDetails");
 
@@ -31,7 +32,20 @@ const getPokemonData = async (name) => {
   }
 };
 
+const getRandomPokemonData = () => {
+  const randomNum = Math.floor(Math.random() * 898) + 1;
+  getPokemonData(randomNum === 1200 ? "1199" : `${randomNum}`);
+};
+
 searchButton.addEventListener("click", () => {
   getPokemonData(pokemonName.value);
 });
+
+randomButton.addEventListener("click", () => {
+  getRandomPokemonData();
+})
+
+document.addEventListener("DOMContentLoaded", () => {
+  getPokemonData("pikachu");
+})
 
