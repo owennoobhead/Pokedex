@@ -5,9 +5,17 @@ const pokemonDetails = document.getElementById("pokemonDetails");
 
 const apiURL = "https://pokeapi.co/api/v2/pokemon/";
 
+
+
 const displayPokemonData = (pokemon) => {
+
+  const regularImg = pokemon.sprites.front_default
+  const shinyImg = pokemon.sprites.front_shiny 
+  let isShiny = false; 
+
+
   const pokemonHTML = `
-    <img src="${pokemon.sprites.front_default}" alt="${pokemon.name}">
+    <img id="pokemon-image" src="${regularImg}" alt="${pokemon.name}">
     <h2>${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h2>
     <p><strong>Height:</strong> ${pokemon.height / 10} m</p>
     <p><strong>Weight:</strong> ${pokemon.weight / 10} kg</p>
@@ -17,6 +25,21 @@ const displayPokemonData = (pokemon) => {
     `;
 
   pokemonDetails.innerHTML = pokemonHTML;
+
+      const shinyToggle = document.getElementById('shiny-toggle')
+      const pokemonImage = document.getElementById('pokemon-image')
+
+      shinyToggle.addEventListener('click', () => {
+        if(isShiny) {
+          pokemonImage.src = regularImg;
+        } else{
+          pokemonImage.src = shinyImg;
+        }
+
+        isShiny = !isShiny; // Toggle state
+
+      })
+
 };
 
 const getPokemonData = async (name) => {
